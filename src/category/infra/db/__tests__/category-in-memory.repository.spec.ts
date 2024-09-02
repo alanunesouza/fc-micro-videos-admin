@@ -6,9 +6,10 @@ describe("CategoryInMemoryRepository", () => {
 
   beforeEach(() => (repository = new CategoryInMemoryRepository()));
   it("should no filter items when filter object is null", async () => {
-    const items = [Category.create({ name: "test" })];
+    const items = [Category.fake()];
     const filterSpy = jest.spyOn(items, "filter" as any);
 
+    // @ts-ignore
     const itemsFiltered = await repository["applyFilter"](items, null);
     expect(filterSpy).not.toHaveBeenCalled();
     expect(itemsFiltered).toStrictEqual(items);
