@@ -1,5 +1,20 @@
-import { InterfaceRepository } from "../../shared/domain/repository/repository-interface";
+import { InterfaceRepository, InterfaceSearchableRepository } from "../../shared/domain/repository/repository-interface";
+import { SearchParams } from "../../shared/domain/repository/search-params";
+import { SearchResult } from "../../shared/domain/repository/search-result";
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
 import { Category } from "./category.entity";
 
-export interface CategoryRespository extends InterfaceRepository<Category, Uuid> {}
+export type CategoryFilter = string;
+
+export class CategorySearchParams extends SearchParams<CategoryFilter> {}
+
+export class CategorySearchResult extends SearchResult<Category> {}
+
+
+export interface InterfaceCategoryRespository extends InterfaceSearchableRepository<
+  Category,
+  Uuid,
+  CategoryFilter,
+  CategorySearchParams,
+  CategorySearchResult
+> {}
