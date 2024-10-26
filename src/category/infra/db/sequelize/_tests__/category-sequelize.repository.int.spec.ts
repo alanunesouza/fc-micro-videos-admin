@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import { CategoryModel } from "../category.model";
-import { InterfaceCategorySequelizeRepository } from "../category-sequelize.repository";
+import { CategorySequelizeRepository } from "../category-sequelize.repository";
 import { Category } from "../../../../domain/category.entity";
 import { Uuid } from "../../../../../shared/domain/value-objects/uuid.vo";
 import { NotFoundError } from "../../../../../shared/domain/errors/not-found.error";
@@ -9,11 +9,11 @@ import { CategorySearchParams, CategorySearchResult } from "../../../../domain/c
 import { setupSequelize } from "../../../../../shared/infra/testing/helpers";
 
 describe("CategorySequelizeRepository Integration Test", () => {
-  let repository: InterfaceCategorySequelizeRepository;
+  let repository: CategorySequelizeRepository;
   setupSequelize({ models: [CategoryModel] });
 
   beforeEach(async () => {
-    repository = new InterfaceCategorySequelizeRepository(CategoryModel);
+    repository = new CategorySequelizeRepository(CategoryModel);
   });
 
   it("should inserts a new entity", async () => {
