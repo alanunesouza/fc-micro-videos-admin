@@ -20,15 +20,15 @@ export class CategoryModel extends Model<CategoryModelProps> {
   @Column({ type: DataType.UUID })
   declare category_id: string;
 
-  @Column({ type: DataType.STRING(255), allowNull: false })
+  @Column({ allowNull: false, type: DataType.STRING(255) })
   declare name: string;
 
-  @Column({ type: DataType.TEXT, allowNull: true })
+  @Column({ allowNull: true, type: DataType.TEXT })
   declare description: string | null;
 
-  @Column({ type: DataType.BOOLEAN, allowNull: false })
+  @Column({ allowNull: false, type: DataType.BOOLEAN })
   declare is_active: boolean;
 
-  @Column({ type: DataType.DATE(3), allowNull: false })
+  @Column({ allowNull: false, type: DataType.DATE(3) })
   declare created_at: Date;
 }

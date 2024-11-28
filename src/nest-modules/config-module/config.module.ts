@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import {
-  ConfigModule as NestConfigModule,
   ConfigModuleOptions,
+  ConfigModule as NestConfigModule,
 } from '@nestjs/config';
-import Joi from 'joi';
+import * as Joi from 'joi';
 import { join } from 'path';
 
 type DB_SCHEMA_TYPE = {
@@ -18,7 +18,7 @@ type DB_SCHEMA_TYPE = {
 };
 
 export const CONFIG_DB_SCHEMA: Joi.StrictSchemaMap<DB_SCHEMA_TYPE> = {
-  DB_VENDOR: Joi.string().valid('mysql', 'sqlite').required(),
+  DB_VENDOR: Joi.string().required().valid('mysql', 'sqlite'),
   DB_HOST: Joi.string().required(),
   DB_DATABASE: Joi.string().when('DB_VENDOR', {
     is: 'mysql',
