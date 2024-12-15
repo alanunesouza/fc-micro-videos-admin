@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { literal, Op } from 'sequelize';
 import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
 import { Uuid } from '../../../../shared/domain/value-objects/uuid.vo';
@@ -20,6 +21,12 @@ export class CategorySequelizeRepository implements ICategoryRepository {
   };
 
   constructor(private categoryModel: typeof CategoryModel) {}
+  findByIds(ids: Uuid[]): Promise<Category[]> {
+    throw new Error('Method not implemented.');
+  }
+  existsById(ids: Uuid[]): Promise<{ exists: Uuid[]; not_exists: Uuid[] }> {
+    throw new Error('Method not implemented.');
+  }
 
   async insert(entity: Category): Promise<void> {
     await this.categoryModel.create({

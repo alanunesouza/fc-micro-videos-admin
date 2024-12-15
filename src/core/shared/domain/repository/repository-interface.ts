@@ -12,8 +12,13 @@ export interface InterfaceRepository<
   update(entity: E): Promise<void>;
   delete(entity_id: EntityId): Promise<void>;
 
-  findById(entity_id: EntityId): Promise<E>;
+  findById(entity_id: EntityId): Promise<E | null>;
   findAll(): Promise<E[]>;
+  findByIds(ids: EntityId[]): Promise<E[]>;
+  existsById(ids: EntityId[]): Promise<{
+    exists: EntityId[];
+    not_exists: EntityId[];
+  }>;
 
   getEntity(): new (...args: any[]) => E;
 }
